@@ -375,14 +375,14 @@ func CheckPermutations() {
 				defer resp.Body.Close()
 
 				if resp.StatusCode == 200 {
-					fmt.Printf("PUBLIC: %s (http://%s.%s)", loc, pd.Domain.Domain, pd.Domain.Suffix)
+					fmt.Printf("PUBLIC: %s (http://%s.%s)\n", loc, pd.Domain.Domain, pd.Domain.Suffix)
 				} else if resp.StatusCode == 403 {
-					fmt.Printf("FORBIDDEN: http://%s (http://%s.%s)", pd.Permutation, pd.Domain.Domain, pd.Domain.Suffix)
+					fmt.Printf("FORBIDDEN: http://%s (http://%s.%s)\n", pd.Permutation, pd.Domain.Domain, pd.Domain.Suffix)
 				}
 			} else if resp.StatusCode == 403 {
-				fmt.Printf("FORBIDDEN: http://%s (http://%s.%s)", pd.Permutation, pd.Domain.Domain, pd.Domain.Suffix)
+				fmt.Printf("FORBIDDEN: http://%s (http://%s.%s)\n", pd.Permutation, pd.Domain.Domain, pd.Domain.Suffix)
 			} else if resp.StatusCode == 503 {
-				fmt.Printf("too fast")
+				fmt.Printf("too fast\n")
 				permutatedQ.Put(pd)
 			}
 
@@ -481,14 +481,14 @@ func CheckKeywordPermutations() {
 				defer resp.Body.Close()
 
 				if resp.StatusCode == 200 {
-					fmt.Printf("PUBLIC: %s (%s)", loc, pd.Keyword)
+					fmt.Printf("PUBLIC: %s (%s)\n", loc, pd.Keyword)
 				} else if resp.StatusCode == 403 {
-					fmt.Printf("FORBIDDEN: %s (%s)", loc, pd.Keyword)
+					fmt.Printf("FORBIDDEN: %s (%s)\n", loc, pd.Keyword)
 				}
 			} else if resp.StatusCode == 403 {
-				fmt.Printf("FORBIDDEN: http://%s (%s)", pd.Permutation, pd.Keyword)
+				fmt.Printf("FORBIDDEN: http://%s (%s)\n", pd.Permutation, pd.Keyword)
 			} else if resp.StatusCode == 503 {
-				fmt.Printf("too fast")
+				fmt.Printf("too fast\n")
 				permutatedQ.Put(pd)
 			}
 
